@@ -212,6 +212,8 @@ Each file gives Claude enough structured context to generate a complete, opinion
 
 
 
+${ASB}
+- [Omni Skills Forge](https://github.com/theihtisham/omni-skills-forge) - 50,000+ curated AI agent skills for Claude Code, Cursor, Copilot, Windsurf, Cline. Visual dashboard, one-click install, skill doctor, auto-update.
 ## License & disclaimer
 
 The repository itself is MIT licensed, see [LICENSE](LICENSE).
