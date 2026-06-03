@@ -1,5 +1,9 @@
 "use client";
 
+// Brand colors extracted from Logo.ai content stream
+const GREEN = "#1ED23C";
+const NAVY = "#000A28";
+
 interface LogoProps {
   className?: string;
   iconOnly?: boolean;
@@ -7,61 +11,123 @@ interface LogoProps {
   size?: "sm" | "md" | "lg";
 }
 
-export function InfoesearchLogo({ className = "", iconOnly = false, white = true, size = "md" }: LogoProps) {
-  const sizes = { sm: 28, md: 36, lg: 48 };
-  const iconSize = sizes[size];
-  const textColor = white ? "#FFFFFF" : "#000A28";
+/*
+  Logo mark breakdown (from JPEG reference):
+  - Outer: Open octagon (flat top/bottom, 45° corners) — gap on the RIGHT side
+  - Inner: Horizontal arrow / "e" cursor shape made of:
+      • A left vertical stem
+      • Upper horizontal bar (full width into the opening)
+      • Lower horizontal bar (shorter, ~3/4 width)
+  The negative space reads as a forward-pointing arrow or stylised "e"
+*/
+
+export function InfoesearchMark({
+  size = 40,
+  color = GREEN,
+}: {
+  size?: number;
+  color?: string;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/*
+        Open octagon — 7 of 8 sides (right vertical edge omitted).
+        Points: top-left → top-right → upper-right-corner → (gap) → lower-right-corner → bottom-right → bottom-left → lower-left-corner → upper-left-corner → back to top-left
+        Using flat-top orientation matching the logo.
+      */}
+      <path
+        d="M 65 7 L 35 7 L 7 35 L 7 65 L 35 93 L 65 93 L 93 65"
+        stroke={color}
+        strokeWidth="9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      {/*
+        Interior "e" / arrow mark:
+        - Vertical left stem
+        - Upper bar reaching toward the right opening
+        - Lower bar (slightly shorter)
+      */}
+      <path
+        d="M 32 32 L 32 68"
+        stroke={color}
+        strokeWidth="8.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 32 42 L 70 42"
+        stroke={color}
+        strokeWidth="8.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 32 58 L 58 58"
+        stroke={color}
+        strokeWidth="8.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function InfoesearchLogo({
+  className = "",
+  iconOnly = false,
+  white = true,
+  size = "md",
+}: LogoProps) {
+  const iconSizes = { sm: 28, md: 36, lg: 50 };
+  const fontSizes = { sm: "0.95rem", md: "1.2rem", lg: "1.55rem" };
+  const textColor = white ? "#FFFFFF" : NAVY;
 
   return (
-    <div className={`flex items-center gap-2.5 ${className}`}>
-      {/* Octagonal "e" mark */}
-      <svg
-        width={iconSize}
-        height={iconSize}
-        viewBox="0 0 80 80"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Open octagon (gap on right side) */}
-        <path
-          d="M 52 8 L 28 8 L 8 28 L 8 52 L 28 72 L 52 72 L 72 52"
-          stroke="#1ED23C"
-          strokeWidth="7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        {/* Arrow "e" cursor inside */}
-        <path
-          d="M 26 36 L 50 36 M 26 44 L 44 44 M 26 28 L 26 52"
-          stroke="#1ED23C"
-          strokeWidth="6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+    <div className={`flex items-center gap-3 ${className}`}>
+      <InfoesearchMark size={iconSizes[size]} color={white ? GREEN : GREEN} />
 
       {!iconOnly && (
-        <div className="flex items-baseline gap-0.5">
+        <div className="flex items-baseline" style={{ gap: "0px" }}>
+          {/* "info" — bold, green */}
           <span
-            className="font-bold tracking-tight leading-none"
             style={{
-              color: "#1ED23C",
-              fontSize: size === "sm" ? "1rem" : size === "md" ? "1.25rem" : "1.6rem",
-              letterSpacing: "-0.02em",
+              color: white ? GREEN : NAVY,
+              fontSize: fontSizes[size],
+              fontWeight: 700,
+              letterSpacing: "-0.025em",
+              lineHeight: 1,
             }}
           >
             info
           </span>
+          {/* "e" — lighter, same color */}
           <span
-            className="font-light tracking-tight leading-none"
             style={{
               color: textColor,
-              fontSize: size === "sm" ? "1rem" : size === "md" ? "1.25rem" : "1.6rem",
-              letterSpacing: "-0.02em",
+              fontSize: fontSizes[size],
+              fontWeight: 300,
+              letterSpacing: "-0.025em",
+              lineHeight: 1,
             }}
           >
-            esearch
+            e
+          </span>
+          {/* "search" — light weight */}
+          <span
+            style={{
+              color: textColor,
+              fontSize: fontSizes[size],
+              fontWeight: 300,
+              letterSpacing: "-0.025em",
+              lineHeight: 1,
+            }}
+          >
+            search
           </span>
         </div>
       )}
@@ -69,53 +135,60 @@ export function InfoesearchLogo({ className = "", iconOnly = false, white = true
   );
 }
 
+/* ── Product logos (mSubs / mDubs / mShield / mTracker) ── */
+
+const PRODUCT_CONFIG = {
+  msubs:   { color: "#00B4D8", label: "SUBS"    },
+  mdubs:   { color: "#A855F7", label: "DUBS"    },
+  mshield: { color: "#EF4444", label: "SHIELD"  },
+  mtracker:{ color: "#3B82F6", label: "TRACKER" },
+} as const;
+
+function ProductMark({ color, size = 36 }: { color: string; size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+      {/* Full closed octagon */}
+      <path
+        d="M 65 7 L 35 7 L 7 35 L 7 65 L 35 93 L 65 93 L 93 65 L 93 35 Z"
+        stroke={color}
+        strokeWidth="8"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      {/*
+        Lowercase "m" inside:
+        Two arches from a shared base line.
+        Start bottom-left, go up-arch1-down-arch2-down to bottom-right.
+      */}
+      <path
+        d="M 22 68 L 22 42 Q 22 30 34 30 Q 46 30 50 40 Q 54 30 66 30 Q 78 30 78 42 L 78 68"
+        stroke={color}
+        strokeWidth="7.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
 export function ProductLogo({
   product,
   size = 32,
 }: {
-  product: "msubs" | "mdubs" | "mshield" | "mtracker";
+  product: keyof typeof PRODUCT_CONFIG;
   size?: number;
 }) {
-  const colors = {
-    msubs: "#00B4D8",
-    mdubs: "#A855F7",
-    mshield: "#EF4444",
-    mtracker: "#3B82F6",
-  };
-  const labels = {
-    msubs: "SUBS",
-    mdubs: "DUBS",
-    mshield: "SHIELD",
-    mtracker: "TRACKER",
-  };
-
-  const color = colors[product];
+  const { color, label } = PRODUCT_CONFIG[product];
+  const fontSize = size * 0.38;
 
   return (
-    <div className="flex items-center gap-2">
-      <svg width={size} height={size} viewBox="0 0 80 80" fill="none">
-        {/* Full octagon */}
-        <path
-          d="M 52 8 L 28 8 L 8 28 L 8 52 L 28 72 L 52 72 L 72 52 L 72 28 Z"
-          stroke={color}
-          strokeWidth="6"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        {/* lowercase "m" */}
-        <path
-          d="M 22 54 L 22 34 Q 22 28 28 28 Q 34 28 36 34 Q 38 28 44 28 Q 50 28 52 34 L 58 54"
-          stroke={color}
-          strokeWidth="5.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-      </svg>
-      <div>
-        <span className="font-light text-sm lowercase tracking-wide" style={{ color }}>m</span>
-        <span className="font-black tracking-wide" style={{ color: "#000A28", fontSize: "0.9rem" }}>
-          {labels[product]}
+    <div className="flex items-center gap-2.5">
+      <ProductMark color={color} size={size} />
+      <div className="flex items-baseline gap-0">
+        <span style={{ color, fontSize, fontWeight: 300 }}>m</span>
+        <span style={{ color: NAVY, fontSize, fontWeight: 900, letterSpacing: "0.02em" }}>
+          {label}
         </span>
       </div>
     </div>
