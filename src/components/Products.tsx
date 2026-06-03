@@ -92,18 +92,18 @@ const PRODUCTS = [
 
 export default function Products() {
   return (
-    <section id="products" className="relative py-32 bg-[#06060A]">
+    <section id="products" className="relative py-32 bg-[#08080E]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section header */}
         <div className="max-w-2xl mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-green mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1ED23C]" />
-            <span className="text-xs font-medium text-[#1ED23C] tracking-widest uppercase">Patented Products</span>
+            <span className="text-xs font-medium text-white/40 tracking-widest uppercase">Patented Products</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
             Four AIs. One Platform.
             <br />
-            <span className="text-gradient-green">Infinite Scale.</span>
+            <span className="text-white/60">Infinite Scale.</span>
           </h2>
           <p className="text-white/50 text-lg leading-relaxed">
             Each product is a standalone patented intelligence — together, they form the most

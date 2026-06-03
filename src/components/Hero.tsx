@@ -1,219 +1,177 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-const ROTATING_WORDS = [
-  "Translation",
-  "Transcription",
-  "Moderation",
-  "Dubbing",
-  "Localisation",
+const LANGUAGES = [
+  { word: "Understood",  lang: "English"    },
+  { word: "Entendido",   lang: "Español"    },
+  { word: "Compris",     lang: "Français"   },
+  { word: "Verstanden",  lang: "Deutsch"    },
+  { word: "Capito",      lang: "Italiano"   },
+  { word: "Понято",      lang: "Русский"    },
+  { word: "مفهوم",       lang: "العربية",  rtl: true },
+  { word: "明白了",       lang: "中文"       },
+  { word: "わかった",     lang: "日本語"     },
+  { word: "समझा",        lang: "हिन्दी"     },
+  { word: "Anlaşıldı",   lang: "Türkçe"    },
+  { word: "Begrepen",    lang: "Nederlands" },
 ];
 
-/* Mini Badge mark — the brand particle floating in the hero background */
-function BadgeParticle({
-  x, y, size, opacity, delay, color, filled = false,
-}: {
-  x: string; y: string; size: number; opacity: number; delay: number; color: string; filled?: boolean;
-}) {
-  return (
-    <div
-      className="absolute pointer-events-none"
-      style={{
-        left: x, top: y,
-        opacity,
-        animation: `float ${7 + delay}s ease-in-out ${delay}s infinite`,
-      }}
-    >
-      <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
-        {filled ? (
-          /* Solid filled badge — full logo mark */
-          <>
-            <polygon points="65,6 35,6 6,35 6,65 35,94 65,94 94,65 94,35" fill={color} />
-            <path d="M 70 44 A 21 21 0 1 0 70 56 Z" fill="rgba(6,6,10,0.9)" />
-            <rect x="27" y="45.5" width="44" height="9" fill={color} />
-          </>
-        ) : (
-          /* Outline-only badge — ghost mark */
-          <polygon
-            points="65,6 35,6 6,35 6,65 35,94 65,94 94,65 94,35"
-            stroke={color}
-            strokeWidth="4"
-            strokeLinejoin="round"
-            fill="none"
-          />
-        )}
-      </svg>
-    </div>
-  );
-}
-
 export default function Hero() {
-  const [wordIndex, setWordIndex] = useState(0);
+  const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
+    const cycle = setInterval(() => {
       setVisible(false);
-      setTimeout(() => {
-        setWordIndex((i) => (i + 1) % ROTATING_WORDS.length);
+      const t = setTimeout(() => {
+        setIndex(i => (i + 1) % LANGUAGES.length);
         setVisible(true);
-      }, 350);
-    }, 2500);
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+      }, 450);
+      return () => clearTimeout(t);
+    }, 2700);
+    return () => clearInterval(cycle);
   }, []);
 
-  // Mix of filled badges + ghost outlines for visual depth
-  const particles = [
-    { x: "7%",  y: "16%", size: 68,  opacity: 0.22, delay: 0,   color: "#1ED23C", filled: true  },
-    { x: "81%", y: "11%", size: 46,  opacity: 0.15, delay: 1.5, color: "#00B4D8", filled: false },
-    { x: "89%", y: "54%", size: 84,  opacity: 0.10, delay: 3,   color: "#A855F7", filled: false },
-    { x: "4%",  y: "64%", size: 54,  opacity: 0.18, delay: 2,   color: "#1ED23C", filled: false },
-    { x: "69%", y: "77%", size: 38,  opacity: 0.14, delay: 0.8, color: "#3B82F6", filled: true  },
-    { x: "44%", y: "84%", size: 30,  opacity: 0.11, delay: 2.5, color: "#EF4444", filled: false },
-    { x: "24%", y: "7%",  size: 42,  opacity: 0.13, delay: 1.2, color: "#A855F7", filled: false },
-    { x: "54%", y: "4%",  size: 26,  opacity: 0.10, delay: 3.5, color: "#1ED23C", filled: true  },
-    { x: "35%", y: "72%", size: 22,  opacity: 0.08, delay: 4,   color: "#1ED23C", filled: false },
-    { x: "76%", y: "36%", size: 32,  opacity: 0.09, delay: 2.8, color: "#00B4D8", filled: false },
-  ];
+  const current = LANGUAGES[index];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#06060A]">
-      {/* Grid background */}
-      <div className="absolute inset-0 grid-bg opacity-100" />
-
-      {/* Green radial glow — top center */}
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ background: "#08080E" }}
+    >
+      {/* Stage light — centred, barely visible */}
       <div
-        className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full pointer-events-none animate-glow-pulse"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, rgba(30,210,60,0.18) 0%, rgba(30,210,60,0.04) 50%, transparent 70%)",
-          filter: "blur(40px)",
+          background:
+            "radial-gradient(ellipse 65% 55% at 50% 30%, rgba(255,255,255,0.018) 0%, transparent 70%)",
         }}
       />
 
-      {/* Secondary glow — bottom left */}
-      <div
-        className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[400px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse, rgba(0,180,216,0.07) 0%, transparent 70%)",
-          filter: "blur(60px)",
-        }}
-      />
+      {/* Content */}
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
 
-      {/* Right glow */}
-      <div
-        className="absolute top-[30%] right-[-5%] w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse, rgba(168,85,247,0.07) 0%, transparent 70%)",
-          filter: "blur(60px)",
-        }}
-      />
+        {/* Micro-badge */}
+        <div
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full mb-16 animate-fade-in"
+          style={{
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            animationDelay: "0.1s",
+            opacity: 0,
+          }}
+        >
+          <span
+            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+            style={{ background: "#1ED23C" }}
+          />
+          <span className="text-xs font-medium text-white/40 tracking-[0.15em] uppercase">
+            Language Intelligence · 4 Patented Products
+          </span>
+        </div>
 
-      {/* Floating badge particles — brand marks drifting in the field */}
-      {particles.map((p, i) => (
-        <BadgeParticle key={i} {...p} />
-      ))}
+        {/* THE WORD — the hero centrepiece */}
+        <div className="mb-5" style={{ minHeight: "1.05em", lineHeight: 1.0 }}>
+          <span
+            dir={current.rtl ? "rtl" : "ltr"}
+            aria-label={`${current.word} (${current.lang})`}
+            style={{
+              display: "block",
+              fontSize: "clamp(3.8rem, 10vw, 9.5rem)",
+              fontWeight: 900,
+              letterSpacing: "-0.035em",
+              lineHeight: 1.0,
+              background: "linear-gradient(175deg, #FFFFFF 0%, rgba(255,255,255,0.68) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              opacity: visible ? 1 : 0,
+              filter: visible ? "blur(0px)" : "blur(14px)",
+              transform: visible
+                ? "translateY(0px) scale(1)"
+                : "translateY(-10px) scale(0.982)",
+              transition:
+                "opacity 0.42s cubic-bezier(0.4,0,0.2,1), filter 0.42s ease, transform 0.42s ease",
+              willChange: "opacity, filter, transform",
+            }}
+          >
+            {current.word}
+          </span>
+        </div>
 
-      {/* Scan line */}
-      <div
-        className="absolute left-0 right-0 h-px pointer-events-none z-10 opacity-[0.06]"
-        style={{
-          background: "linear-gradient(90deg, transparent, #1ED23C, transparent)",
-          animation: "scan 5s linear infinite",
-        }}
-      />
-
-      {/* Main content */}
-      <div className="relative z-20 max-w-6xl mx-auto px-6 lg:px-8 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-green mb-10 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#1ED23C] animate-pulse" />
-          <span className="text-xs font-medium text-[#1ED23C] tracking-widest uppercase">
-            4 Patented AI Products
+        {/* Language label */}
+        <div
+          className="mb-14"
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(-4px)",
+            transition: "opacity 0.35s ease 0.06s, transform 0.35s ease 0.06s",
+          }}
+        >
+          <span
+            className="text-xs font-semibold tracking-[0.22em] uppercase"
+            style={{ color: "#1ED23C" }}
+          >
+            {current.lang}
           </span>
         </div>
 
         {/* Headline */}
         <h1
-          className="text-gradient-white font-bold leading-[1.05] tracking-tight mb-6 animate-fade-in-up"
-          style={{
-            fontSize: "clamp(2.8rem, 7vw, 6.5rem)",
-            animationDelay: "0.25s",
-            opacity: 0,
-          }}
+          className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.1] tracking-tight mb-5 animate-fade-in-up"
+          style={{ animationDelay: "0.35s", opacity: 0 }}
         >
-          The World Speaks.
-          <br />
-          <span className="text-gradient-green">We Make It Understood.</span>
-        </h1>
-
-        {/* Rotating service word */}
-        <div
-          className="flex items-center justify-center gap-3 mb-8 animate-fade-in-up"
-          style={{ animationDelay: "0.4s", opacity: 0 }}
-        >
-          <span className="text-white/40 text-lg font-light tracking-wide">AI-Powered</span>
           <span
-            className="text-lg font-semibold tracking-wide transition-all duration-300"
             style={{
-              color: "#1ED23C",
-              opacity: visible ? 1 : 0,
-              transform: visible ? "translateY(0)" : "translateY(8px)",
-              minWidth: "140px",
-              display: "inline-block",
-              textAlign: "left",
+              background: "linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.78) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
             }}
           >
-            {ROTATING_WORDS[wordIndex]}
+            The world speaks.
           </span>
-          <span className="text-white/40 text-lg font-light tracking-wide">at Scale</span>
-        </div>
+          <br />
+          <span className="text-white/38 font-light">We make it understood.</span>
+        </h1>
 
-        {/* Sub-description */}
+        {/* Description */}
         <p
-          className="text-white/50 text-lg leading-relaxed max-w-2xl mx-auto mb-12 animate-fade-in-up"
+          className="text-white/40 text-base sm:text-lg leading-relaxed max-w-lg mb-10 animate-fade-in-up"
           style={{ animationDelay: "0.5s", opacity: 0 }}
         >
-          Infoesearch deploys enterprise-grade AI across every dimension of content intelligence —
-          from screen to screen, language to language, market to market.
+          Enterprise AI for translation, transcription, moderation, dubbing, and
+          localisation — at the speed and scale global content demands.
         </p>
 
         {/* CTAs */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up"
+          className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up"
           style={{ animationDelay: "0.65s", opacity: 0 }}
         >
           <a
             href="#demo"
-            className="group px-8 py-4 rounded-xl text-base font-bold text-black bg-[#1ED23C] hover:bg-[#3AE024] transition-all duration-200 glow-green-btn"
+            className="group px-8 py-4 rounded-xl text-[0.9375rem] font-bold text-black bg-[#1ED23C] hover:bg-[#2FE050] transition-all duration-200 glow-green-btn"
           >
             Book a Demo
             <span className="ml-2 group-hover:translate-x-1 inline-block transition-transform">→</span>
           </a>
           <a
             href="#products"
-            className="px-8 py-4 rounded-xl text-base font-medium text-white/70 glass hover:text-white hover:border-white/20 transition-all duration-200"
+            className="px-8 py-4 text-[0.9375rem] font-medium text-white/45 hover:text-white/70 transition-colors duration-200"
           >
-            Explore Products
+            Explore Products →
           </a>
         </div>
 
         {/* Trust strip */}
         <div
-          className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 animate-fade-in-up"
-          style={{ animationDelay: "0.8s", opacity: 0 }}
+          className="mt-16 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 animate-fade-in"
+          style={{ animationDelay: "0.9s", opacity: 0 }}
         >
-          {[
-            "4 Patented Technologies",
-            "50+ Languages",
-            "99.8% Accuracy Rate",
-            "Enterprise SLA",
-          ].map((stat) => (
-            <div key={stat} className="flex items-center gap-2">
-              <span className="w-1 h-1 rounded-full bg-[#1ED23C]/60" />
-              <span className="text-sm text-white/40 tracking-wide">{stat}</span>
-            </div>
+          {["50+ Languages", "99.8% Accuracy", "4 Patent Technologies", "Enterprise SLA"].map((s) => (
+            <span key={s} className="text-xs text-white/25 tracking-wide">{s}</span>
           ))}
         </div>
       </div>
@@ -221,13 +179,16 @@ export default function Hero() {
       {/* Bottom fade */}
       <div
         className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, transparent, #06060A)" }}
+        style={{ background: "linear-gradient(to bottom, transparent, #08080E)" }}
       />
 
       {/* Scroll hint */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/25 text-xs tracking-widest uppercase animate-fade-in" style={{ animationDelay: "1.2s", opacity: 0 }}>
+      <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/18 text-xs tracking-widest uppercase animate-fade-in"
+        style={{ animationDelay: "1.4s", opacity: 0 }}
+      >
         <span>Scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-white/20 to-transparent" />
+        <div className="w-px h-8 bg-gradient-to-b from-white/15 to-transparent" />
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #06060A;
+  --background: #08080E;
   --foreground: #F5F5F5;
   --brand-green: #1ED23C;
   --brand-green-dim: #138A28;
@@ -35,7 +35,7 @@ body {
 }
 
 ::selection {
-  background: rgba(46, 204, 29, 0.35);
+  background: rgba(30, 210, 60, 0.18);
   color: #fff;
 }
 
@@ -43,10 +43,10 @@ body {
   width: 3px;
 }
 ::-webkit-scrollbar-track {
-  background: #06060A;
+  background: #08080E;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(46, 204, 29, 0.4);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 2px;
 }
 

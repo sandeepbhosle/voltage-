@@ -24,13 +24,13 @@ export default function ServicesTicker() {
   const doubledLangs = [...LANGUAGES, ...LANGUAGES];
 
   return (
-    <div className="relative py-10 overflow-hidden border-y border-white/[0.06] bg-[#070A07]">
+    <div className="relative py-10 overflow-hidden border-y border-white/[0.06] bg-[#08080E]">
       {/* Left fade */}
       <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to right, #070A07, transparent)" }} />
+        style={{ background: "linear-gradient(to right, #08080E, transparent)" }} />
       {/* Right fade */}
       <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to left, #070A07, transparent)" }} />
+        style={{ background: "linear-gradient(to left, #08080E, transparent)" }} />
 
       {/* Services ticker */}
       <div className="mb-5 overflow-hidden">
@@ -44,7 +44,7 @@ export default function ServicesTicker() {
                   {s.label}
                 </span>
               </div>
-              <span className="text-[#1ED23C]/40 text-lg">◆</span>
+              <span className="text-white/20 text-lg">◆</span>
             </div>
           ))}
         </div>
@@ -65,7 +65,7 @@ export default function ServicesTicker() {
                 style={{ fontSize: "0.65rem" }}>
                 {lang}
               </span>
-              <span className="text-[#1ED23C]/20 text-xs">·</span>
+              <span className="text-white/15 text-xs">·</span>
             </div>
           ))}
         </div>

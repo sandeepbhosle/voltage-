@@ -20,12 +20,12 @@ const LOGOS = [
 
 export default function Stats() {
   return (
-    <section id="about" className="relative py-32 bg-[#06060A]">
+    <section id="about" className="relative py-32 bg-[#0A0A14]">
       {/* Green glow center */}
       <div
         className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, rgba(30,210,60,0.15) 0%, transparent 60%)",
+          background: "radial-gradient(ellipse at center, rgba(255,255,255,0.025) 0%, transparent 60%)",
           height: "400px",
           top: "50%",
           transform: "translateY(-50%)",
@@ -35,14 +35,14 @@ export default function Stats() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section label */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-green mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1ED23C]" />
-            <span className="text-xs font-medium text-[#1ED23C] tracking-widest uppercase">By the Numbers</span>
+            <span className="text-xs font-medium text-white/40 tracking-widest uppercase">By the Numbers</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white">
             Built for the World&apos;s
             <br />
-            <span className="text-gradient-green">Hardest Problems</span>
+            <span className="text-white/65">Hardest Problems</span>
           </h2>
         </div>
 
@@ -51,10 +51,10 @@ export default function Stats() {
           {STATS.map((stat, i) => (
             <div
               key={i}
-              className="bg-[#06060A] group hover:bg-[#0A0E0A] transition-colors duration-300 p-10 text-center"
+              className="bg-[#0A0A14] group hover:bg-[#0E0E1C] transition-colors duration-300 p-10 text-center"
             >
               <div
-                className="text-4xl sm:text-5xl font-black mb-2 text-gradient-green"
+                className="text-4xl sm:text-5xl font-black mb-2 text-white"
                 style={{ fontVariantNumeric: "tabular-nums" }}
               >
                 {stat.value}

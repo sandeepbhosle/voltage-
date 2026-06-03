@@ -25,7 +25,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[rgba(6,6,10,0.92)] backdrop-blur-xl border-b border-white/[0.06]"
+          ? "bg-[rgba(8,8,14,0.92)] backdrop-blur-xl border-b border-white/[0.06]"
           : "bg-transparent"
       }`}
     >
@@ -83,7 +83,7 @@ export default function Navbar() {
           mobileOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-[rgba(6,6,10,0.98)] backdrop-blur-xl border-t border-white/[0.06] px-6 py-6 flex flex-col gap-4">
+        <div className="bg-[rgba(8,8,14,0.98)] backdrop-blur-xl border-t border-white/[0.06] px-6 py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
             <a
               key={link.label}
