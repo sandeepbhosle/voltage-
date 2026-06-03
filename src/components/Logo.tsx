@@ -1,19 +1,27 @@
 "use client";
 
-// Exact brand colours extracted from Logo.ai content stream
+// Exact brand colours — extracted from Logo.ai content stream
 export const BRAND_GREEN = "#1ED23C";
 export const BRAND_NAVY  = "#000A28";
 
-/* ─── Primary mark: "Signal" ─────────────────────────────────────────────────
-   Double-ring octagon (outer faint + inner bold) with circular-arc "e" + bar.
-   The cleanest, most technically precise interpretation of the octagonal-e DNA.
-   ─────────────────────────────────────────────────────────────────────────── */
+/*
+  PRIMARY MARK — Badge (Mark B)
+  Solid filled octagon · white negative-space "e" inside
+  The most distinctive, ownable mark in the language-AI space.
+
+  e-geometry:
+  · White near-circle (r≈21, centre 50,50) — open ~36° on the right
+  · Green horizontal bar at y=45–55 cuts the circle → creates the "e" counter
+  · Result: upper-right gap (the e aperture) + lower bowl (closed feel)
+*/
 export function InfoesearchMark({
   size = 40,
   color = BRAND_GREEN,
+  bg = "transparent",
 }: {
   size?: number;
   color?: string;
+  bg?: string;
 }) {
   return (
     <svg
@@ -23,52 +31,56 @@ export function InfoesearchMark({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Outer octagon — fine ghost ring */}
+      {/* Optional background (useful on very dark or gradient surfaces) */}
+      {bg !== "transparent" && (
+        <polygon
+          points="65,6 35,6 6,35 6,65 35,94 65,94 94,65 94,35"
+          fill={bg}
+        />
+      )}
+
+      {/* Filled octagon — the badge */}
       <polygon
         points="65,6 35,6 6,35 6,65 35,94 65,94 94,65 94,35"
-        stroke={color}
-        strokeWidth="4.5"
-        strokeLinejoin="round"
-        fill="none"
-        opacity="0.28"
-      />
-      {/* Inner octagon — bold ring */}
-      <polygon
-        points="61,14 39,14 14,39 14,61 39,86 61,86 86,61 86,39"
-        stroke={color}
-        strokeWidth="4"
-        strokeLinejoin="round"
-        fill="none"
-        opacity="0.65"
+        fill={color}
       />
 
-      {/* "e" mark — circular arc (C-bowl) + horizontal counter bar */}
-      {/* Arc: large arc counterclockwise from upper-right to lower-right = C */}
+      {/* Subtle top-left highlight — gives the badge depth */}
       <path
-        d="M 67 42 A 19 19 0 1 0 67 58"
-        stroke={color}
-        strokeWidth="6"
+        d="M 50 6 L 35 6 L 6 35 L 6 50"
+        stroke="rgba(255,255,255,0.18)"
+        strokeWidth="2.5"
         strokeLinecap="round"
+        strokeLinejoin="round"
         fill="none"
       />
-      {/* Counter bar through the C */}
-      <line
-        x1="31" y1="50" x2="67" y2="50"
-        stroke={color}
-        strokeWidth="6"
-        strokeLinecap="round"
+
+      {/*
+        White "e" — near-complete circle open ~36° on right
+        Arc: M (70,44) counterclockwise large-arc to (70,56) → C-bowl shape
+        Z closes with chord on the right → filled white region
+      */}
+      <path
+        d="M 70 44 A 21 21 0 1 0 70 56 Z"
+        fill="white"
       />
 
-      {/* Structural accent dots at cardinal midpoints — signal nodes */}
-      <circle cx="50" cy="6"  r="2.2" fill={color} opacity="0.45" />
-      <circle cx="94" cy="50" r="2.2" fill={color} opacity="0.45" />
-      <circle cx="50" cy="94" r="2.2" fill={color} opacity="0.45" />
-      <circle cx="6"  cy="50" r="2.2" fill={color} opacity="0.45" />
+      {/*
+        Green counter bar — horizontal cut through the white bowl
+        Creates the "e" aperture on the upper right + maintains lower bowl
+      */}
+      <rect
+        x="27"
+        y="45.5"
+        width="44"
+        height="9"
+        fill={color}
+      />
     </svg>
   );
 }
 
-/* ─── Wordmark ────────────────────────────────────────────────────────────── */
+/* ─── Full wordmark lockup ───────────────────────────────────────────────── */
 export function InfoesearchLogo({
   className = "",
   iconOnly = false,
@@ -80,14 +92,14 @@ export function InfoesearchLogo({
   white?: boolean;
   size?: "sm" | "md" | "lg";
 }) {
-  const iconSizes = { sm: 26, md: 34, lg: 48 };
-  const fontSizes = { sm: "0.9rem", md: "1.15rem", lg: "1.5rem" };
-  const textColor = white ? "#FFFFFF" : BRAND_NAVY;
-  const markColor = white ? BRAND_GREEN : BRAND_GREEN;
+  const iconSizes  = { sm: 26,      md: 34,      lg: 50      };
+  const fontSizes  = { sm: "0.9rem", md: "1.15rem", lg: "1.5rem" };
+  const gaps       = { sm: "10px",  md: "12px",  lg: "16px"  };
+  const textColor  = white ? "#FFFFFF" : BRAND_NAVY;
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      <InfoesearchMark size={iconSizes[size]} color={markColor} />
+    <div className={`flex items-center ${className}`} style={{ gap: gaps[size] }}>
+      <InfoesearchMark size={iconSizes[size]} color={BRAND_GREEN} />
 
       {!iconOnly && (
         <div style={{ display: "flex", alignItems: "baseline", gap: 0 }}>
@@ -101,7 +113,7 @@ export function InfoesearchLogo({
           }}>
             info
           </span>
-          {/* "e" — light weight, same colour as rest of wordmark */}
+          {/* "e" + "search" — light, white/navy */}
           <span style={{
             color: textColor,
             fontSize: fontSizes[size],
@@ -109,17 +121,7 @@ export function InfoesearchLogo({
             letterSpacing: "-0.03em",
             lineHeight: 1,
           }}>
-            e
-          </span>
-          {/* "search" — light weight */}
-          <span style={{
-            color: textColor,
-            fontSize: fontSizes[size],
-            fontWeight: 300,
-            letterSpacing: "-0.03em",
-            lineHeight: 1,
-          }}>
-            search
+            esearch
           </span>
         </div>
       )}
@@ -127,7 +129,7 @@ export function InfoesearchLogo({
   );
 }
 
-/* ─── Product logo marks ──────────────────────────────────────────────────── */
+/* ─── Product logo marks ─────────────────────────────────────────────────── */
 const PRODUCTS = {
   msubs:    { color: "#00B4D8", label: "SUBS"    },
   mdubs:    { color: "#A855F7", label: "DUBS"    },
@@ -135,22 +137,33 @@ const PRODUCTS = {
   mtracker: { color: "#3B82F6", label: "TRACKER" },
 } as const;
 
-function ProductMark({ color, size }: { color: string; size: number }) {
+export function ProductMark({
+  color,
+  size = 40,
+}: {
+  color: string;
+  size?: number;
+}) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
-      {/* Closed octagon */}
+      {/* Same badge treatment — filled with product colour */}
       <polygon
         points="65,6 35,6 6,35 6,65 35,94 65,94 94,65 94,35"
-        stroke={color}
-        strokeWidth="6"
+        fill={color}
+      />
+      <path
+        d="M 50 6 L 35 6 L 6 35 L 6 50"
+        stroke="rgba(255,255,255,0.2)"
+        strokeWidth="2.5"
+        strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
       />
-      {/* Lowercase "m" — two arches from a shared stem */}
+      {/* Lowercase "m" — white, two-arch */}
       <path
-        d="M 22 70 L 22 42 Q 22 28 36 28 Q 50 28 50 42 Q 50 28 64 28 Q 78 28 78 42 L 78 70"
-        stroke={color}
-        strokeWidth="7"
+        d="M 22 70 L 22 40 Q 22 26 36 26 Q 50 26 50 40 Q 50 26 64 26 Q 78 26 78 40 L 78 70"
+        stroke="white"
+        strokeWidth="7.5"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
@@ -161,7 +174,7 @@ function ProductMark({ color, size }: { color: string; size: number }) {
 
 export function ProductLogo({
   product,
-  size = 32,
+  size = 36,
   dark = false,
 }: {
   product: keyof typeof PRODUCTS;
@@ -169,13 +182,13 @@ export function ProductLogo({
   dark?: boolean;
 }) {
   const { color, label } = PRODUCTS[product];
-  const fs = size * 0.4;
+  const fs = `${size * 0.42}px`;
 
   return (
-    <div className="flex items-center gap-2.5">
+    <div style={{ display: "flex", alignItems: "center", gap: `${size * 0.3}px` }}>
       <ProductMark color={color} size={size} />
       <div style={{ display: "flex", alignItems: "baseline", gap: 0 }}>
-        <span style={{ color, fontSize: fs, fontWeight: 300, letterSpacing: "0.01em" }}>m</span>
+        <span style={{ color, fontSize: fs, fontWeight: 300 }}>m</span>
         <span style={{
           color: dark ? BRAND_NAVY : "#FFFFFF",
           fontSize: fs,

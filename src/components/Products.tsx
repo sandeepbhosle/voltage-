@@ -1,5 +1,7 @@
 "use client";
 
+import { ProductMark } from "./Logo";
+
 const PRODUCTS = [
   {
     id: "msubs",
@@ -87,28 +89,6 @@ const PRODUCTS = [
   },
 ];
 
-function OctagonIcon({ color, size = 40 }: { color: string; size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 80 80" fill="none">
-      <path
-        d="M52 8L28 8L8 28L8 52L28 72L52 72L72 52L72 28Z"
-        stroke={color}
-        strokeWidth="5.5"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      {/* m letterform */}
-      <path
-        d="M20 54L20 32Q20 26 27 26Q34 26 37 33Q40 26 47 26Q54 26 57 32L57 54"
-        stroke={color}
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-  );
-}
 
 export default function Products() {
   return (
@@ -153,7 +133,8 @@ export default function Products() {
 
               {/* Icon + tag */}
               <div className="flex items-center gap-4 mb-6">
-                <OctagonIcon color={p.color} size={44} />
+                {/* Badge mark — consistent with primary brand mark system */}
+                <ProductMark color={p.color} size={48} />
                 <div>
                   <div
                     className="text-xs font-semibold tracking-widest uppercase mb-0.5"

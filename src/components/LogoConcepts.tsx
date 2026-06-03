@@ -342,11 +342,22 @@ export default function LogoConcepts() {
 
         {/* Concept grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
-          {CONCEPTS.map(({ id, name, Mark, philosophy, description, best }) => (
+          {CONCEPTS.map(({ id, name, Mark, philosophy, description, best }) => {
+            const isSelected = id === "B";
+            return (
             <div
               key={id}
-              className="group glass rounded-2xl border border-white/[0.07] hover:border-[#1ED23C]/25 transition-all duration-400 overflow-hidden"
+              className={`group glass rounded-2xl border transition-all duration-400 overflow-hidden relative ${
+                isSelected
+                  ? "border-[#1ED23C]/50 ring-1 ring-[#1ED23C]/20"
+                  : "border-white/[0.07] hover:border-[#1ED23C]/25"
+              }`}
             >
+              {isSelected && (
+                <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#1ED23C] text-black text-[10px] font-bold tracking-widest uppercase">
+                  ✓ Selected
+                </div>
+              )}
               {/* Mark preview — three background variants */}
               <div className="p-6 pb-0">
                 {/* Dark bg (primary) */}
@@ -387,7 +398,8 @@ export default function LogoConcepts() {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Color system preview */}

@@ -10,16 +10,12 @@ const ROTATING_WORDS = [
   "Localisation",
 ];
 
-function OctagonParticle({
-  x, y, size, opacity, delay, color,
+/* Mini Badge mark — the brand particle floating in the hero background */
+function BadgeParticle({
+  x, y, size, opacity, delay, color, filled = false,
 }: {
-  x: string; y: string; size: number; opacity: number; delay: number; color: string;
+  x: string; y: string; size: number; opacity: number; delay: number; color: string; filled?: boolean;
 }) {
-  const points = Array.from({ length: 8 }, (_, i) => {
-    const angle = (i * 45 - 22.5) * (Math.PI / 180);
-    return `${size / 2 + (size / 2) * Math.cos(angle)},${size / 2 + (size / 2) * Math.sin(angle)}`;
-  }).join(" ");
-
   return (
     <div
       className="absolute pointer-events-none"
@@ -29,14 +25,24 @@ function OctagonParticle({
         animation: `float ${7 + delay}s ease-in-out ${delay}s infinite`,
       }}
     >
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none">
-        <polygon
-          points={points}
-          stroke={color}
-          strokeWidth="1.5"
-          fill="none"
-          opacity="0.6"
-        />
+      <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+        {filled ? (
+          /* Solid filled badge — full logo mark */
+          <>
+            <polygon points="65,6 35,6 6,35 6,65 35,94 65,94 94,65 94,35" fill={color} />
+            <path d="M 70 44 A 21 21 0 1 0 70 56 Z" fill="rgba(6,6,10,0.9)" />
+            <rect x="27" y="45.5" width="44" height="9" fill={color} />
+          </>
+        ) : (
+          /* Outline-only badge — ghost mark */
+          <polygon
+            points="65,6 35,6 6,35 6,65 35,94 65,94 94,65 94,35"
+            stroke={color}
+            strokeWidth="4"
+            strokeLinejoin="round"
+            fill="none"
+          />
+        )}
       </svg>
     </div>
   );
@@ -58,15 +64,18 @@ export default function Hero() {
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, []);
 
+  // Mix of filled badges + ghost outlines for visual depth
   const particles = [
-    { x: "8%",  y: "18%", size: 64,  opacity: 0.18, delay: 0,   color: "#1ED23C" },
-    { x: "82%", y: "12%", size: 44,  opacity: 0.14, delay: 1.5, color: "#00B4D8" },
-    { x: "90%", y: "55%", size: 80,  opacity: 0.12, delay: 3,   color: "#A855F7" },
-    { x: "5%",  y: "65%", size: 52,  opacity: 0.16, delay: 2,   color: "#1ED23C" },
-    { x: "70%", y: "78%", size: 36,  opacity: 0.13, delay: 0.8, color: "#3B82F6" },
-    { x: "45%", y: "85%", size: 28,  opacity: 0.10, delay: 2.5, color: "#EF4444" },
-    { x: "25%", y: "8%",  size: 40,  opacity: 0.12, delay: 1.2, color: "#A855F7" },
-    { x: "55%", y: "5%",  size: 24,  opacity: 0.09, delay: 3.5, color: "#1ED23C" },
+    { x: "7%",  y: "16%", size: 68,  opacity: 0.22, delay: 0,   color: "#1ED23C", filled: true  },
+    { x: "81%", y: "11%", size: 46,  opacity: 0.15, delay: 1.5, color: "#00B4D8", filled: false },
+    { x: "89%", y: "54%", size: 84,  opacity: 0.10, delay: 3,   color: "#A855F7", filled: false },
+    { x: "4%",  y: "64%", size: 54,  opacity: 0.18, delay: 2,   color: "#1ED23C", filled: false },
+    { x: "69%", y: "77%", size: 38,  opacity: 0.14, delay: 0.8, color: "#3B82F6", filled: true  },
+    { x: "44%", y: "84%", size: 30,  opacity: 0.11, delay: 2.5, color: "#EF4444", filled: false },
+    { x: "24%", y: "7%",  size: 42,  opacity: 0.13, delay: 1.2, color: "#A855F7", filled: false },
+    { x: "54%", y: "4%",  size: 26,  opacity: 0.10, delay: 3.5, color: "#1ED23C", filled: true  },
+    { x: "35%", y: "72%", size: 22,  opacity: 0.08, delay: 4,   color: "#1ED23C", filled: false },
+    { x: "76%", y: "36%", size: 32,  opacity: 0.09, delay: 2.8, color: "#00B4D8", filled: false },
   ];
 
   return (
@@ -101,9 +110,9 @@ export default function Hero() {
         }}
       />
 
-      {/* Floating octagon particles */}
+      {/* Floating badge particles — brand marks drifting in the field */}
       {particles.map((p, i) => (
-        <OctagonParticle key={i} {...p} />
+        <BadgeParticle key={i} {...p} />
       ))}
 
       {/* Scan line */}
