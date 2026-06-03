@@ -117,8 +117,8 @@ export default function Products() {
         {/* Section header */}
         <div className="max-w-2xl mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-green mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2ECC1D]" />
-            <span className="text-xs font-medium text-[#2ECC1D] tracking-widest uppercase">Patented Products</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1ED23C]" />
+            <span className="text-xs font-medium text-[#1ED23C] tracking-widest uppercase">Patented Products</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
             Four AIs. One Platform.

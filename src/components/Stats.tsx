@@ -25,7 +25,7 @@ export default function Stats() {
       <div
         className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, rgba(46,204,29,0.15) 0%, transparent 60%)",
+          background: "radial-gradient(ellipse at center, rgba(30,210,60,0.15) 0%, transparent 60%)",
           height: "400px",
           top: "50%",
           transform: "translateY(-50%)",
@@ -36,8 +36,8 @@ export default function Stats() {
         {/* Section label */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-green mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2ECC1D]" />
-            <span className="text-xs font-medium text-[#2ECC1D] tracking-widest uppercase">By the Numbers</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1ED23C]" />
+            <span className="text-xs font-medium text-[#1ED23C] tracking-widest uppercase">By the Numbers</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white">
             Built for the World&apos;s

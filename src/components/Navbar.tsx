@@ -59,7 +59,7 @@ export default function Navbar() {
             </a>
             <a
               href="#demo"
-              className="group relative px-5 py-2.5 rounded-lg text-sm font-semibold text-black bg-[#2ECC1D] hover:bg-[#3AE024] transition-all duration-200 glow-green-btn"
+              className="group relative px-5 py-2.5 rounded-lg text-sm font-semibold text-black bg-[#1ED23C] hover:bg-[#3AE024] transition-all duration-200 glow-green-btn"
             >
               Book a Demo
               <span className="ml-1.5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 inline-block transition-all">→</span>
@@ -96,7 +96,7 @@ export default function Navbar() {
           ))}
           <a
             href="#demo"
-            className="mt-2 w-full text-center px-5 py-3 rounded-lg text-sm font-semibold text-black bg-[#2ECC1D] hover:bg-[#3AE024] transition-all"
+            className="mt-2 w-full text-center px-5 py-3 rounded-lg text-sm font-semibold text-black bg-[#1ED23C] hover:bg-[#3AE024] transition-all"
             onClick={() => setMobileOpen(false)}
           >
             Book a Demo →

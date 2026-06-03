@@ -3,9 +3,9 @@
 :root {
   --background: #06060A;
   --foreground: #F5F5F5;
-  --brand-green: #2ECC1D;
-  --brand-green-dim: #1A8012;
-  --brand-navy: #0B1A33;
+  --brand-green: #1ED23C;
+  --brand-green-dim: #138A28;
+  --brand-navy: #000A28;
 }
 
 @theme inline {
@@ -52,7 +52,7 @@ body {
 
 /* ── Gradient text utilities ── */
 .text-gradient-green {
-  background: linear-gradient(135deg, #6EF760 0%, #2ECC1D 50%, #1A8012 100%);
+  background: linear-gradient(135deg, #6EF760 0%, #1ED23C 50%, #138A28 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -43,9 +43,9 @@ const TAG_COLORS: Record<string, string> = {
   "Dubbing": "rgba(168,85,247,0.12)",
   "Subtitles": "rgba(0,180,216,0.12)",
   "Moderation": "rgba(239,68,68,0.12)",
-  "Translation": "rgba(46,204,29,0.10)",
+  "Translation": "rgba(30,210,60,0.10)",
   "Localisation": "rgba(59,130,246,0.12)",
-  "Transcription": "rgba(46,204,29,0.10)",
+  "Transcription": "rgba(30,210,60,0.10)",
   "Compliance": "rgba(239,68,68,0.10)",
 };
 
@@ -53,9 +53,9 @@ const TAG_TEXT: Record<string, string> = {
   "Dubbing": "#A855F7",
   "Subtitles": "#00B4D8",
   "Moderation": "#EF4444",
-  "Translation": "#2ECC1D",
+  "Translation": "#1ED23C",
   "Localisation": "#3B82F6",
-  "Transcription": "#2ECC1D",
+  "Transcription": "#1ED23C",
   "Compliance": "#EF4444",
 };
 
@@ -66,8 +66,8 @@ export default function Industries() {
         {/* Header */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-green mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2ECC1D]" />
-            <span className="text-xs font-medium text-[#2ECC1D] tracking-widest uppercase">Industries</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1ED23C]" />
+            <span className="text-xs font-medium text-[#1ED23C] tracking-widest uppercase">Industries</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             Your Industry.
@@ -85,7 +85,7 @@ export default function Industries() {
           {INDUSTRIES.map((ind) => (
             <div
               key={ind.name}
-              className="group glass rounded-2xl p-7 border border-white/[0.06] hover:border-[#2ECC1D]/15 transition-all duration-300 hover:-translate-y-1"
+              className="group glass rounded-2xl p-7 border border-white/[0.06] hover:border-[#1ED23C]/15 transition-all duration-300 hover:-translate-y-1"
             >
               {/* Icon */}
               <div className="text-3xl mb-5 leading-none">{ind.icon}</div>

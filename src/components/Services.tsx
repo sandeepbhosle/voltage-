@@ -4,9 +4,9 @@ const SERVICES = [
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <circle cx="14" cy="14" r="11" stroke="#2ECC1D" strokeWidth="1.5"/>
-        <path d="M9 14 Q14 8 19 14 Q14 20 9 14Z" stroke="#2ECC1D" strokeWidth="1.5" fill="none"/>
-        <path d="M14 3 L14 25 M3 14 L25 14" stroke="#2ECC1D" strokeWidth="1" strokeDasharray="2 2"/>
+        <circle cx="14" cy="14" r="11" stroke="#1ED23C" strokeWidth="1.5"/>
+        <path d="M9 14 Q14 8 19 14 Q14 20 9 14Z" stroke="#1ED23C" strokeWidth="1.5" fill="none"/>
+        <path d="M14 3 L14 25 M3 14 L25 14" stroke="#1ED23C" strokeWidth="1" strokeDasharray="2 2"/>
       </svg>
     ),
     title: "AI Translation",
@@ -17,9 +17,9 @@ const SERVICES = [
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <rect x="4" y="8" width="20" height="12" rx="3" stroke="#2ECC1D" strokeWidth="1.5"/>
-        <path d="M8 12h12M8 16h8" stroke="#2ECC1D" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M14 20v4M10 24h8" stroke="#2ECC1D" strokeWidth="1.5" strokeLinecap="round"/>
+        <rect x="4" y="8" width="20" height="12" rx="3" stroke="#1ED23C" strokeWidth="1.5"/>
+        <path d="M8 12h12M8 16h8" stroke="#1ED23C" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M14 20v4M10 24h8" stroke="#1ED23C" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
     title: "Transcription",
@@ -30,8 +30,8 @@ const SERVICES = [
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M14 4L6 8v8c0 4.4 3.4 8.5 8 10 4.6-1.5 8-5.6 8-10V8L14 4Z" stroke="#2ECC1D" strokeWidth="1.5" fill="none"/>
-        <path d="M10 13l3 3 5-5" stroke="#2ECC1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M14 4L6 8v8c0 4.4 3.4 8.5 8 10 4.6-1.5 8-5.6 8-10V8L14 4Z" stroke="#1ED23C" strokeWidth="1.5" fill="none"/>
+        <path d="M10 13l3 3 5-5" stroke="#1ED23C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
     title: "Content Moderation",
@@ -42,9 +42,9 @@ const SERVICES = [
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <circle cx="14" cy="14" r="5" stroke="#2ECC1D" strokeWidth="1.5"/>
-        <path d="M14 4v3M14 21v3M4 14H7M21 14h3" stroke="#2ECC1D" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M7.5 7.5l2 2M18.5 18.5l2 2M7.5 20.5l2-2M18.5 9.5l2-2" stroke="#2ECC1D" strokeWidth="1.2" strokeLinecap="round"/>
+        <circle cx="14" cy="14" r="5" stroke="#1ED23C" strokeWidth="1.5"/>
+        <path d="M14 4v3M14 21v3M4 14H7M21 14h3" stroke="#1ED23C" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M7.5 7.5l2 2M18.5 18.5l2 2M7.5 20.5l2-2M18.5 9.5l2-2" stroke="#1ED23C" strokeWidth="1.2" strokeLinecap="round"/>
       </svg>
     ),
     title: "AI Dubbing",
@@ -55,11 +55,11 @@ const SERVICES = [
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <rect x="3" y="3" width="9" height="9" rx="2" stroke="#2ECC1D" strokeWidth="1.5"/>
-        <rect x="16" y="3" width="9" height="9" rx="2" stroke="#2ECC1D" strokeWidth="1.5"/>
-        <rect x="3" y="16" width="9" height="9" rx="2" stroke="#2ECC1D" strokeWidth="1.5"/>
-        <rect x="16" y="16" width="9" height="9" rx="2" stroke="#2ECC1D" strokeWidth="1.5"/>
-        <path d="M12 7.5h4M7.5 12v4M20.5 12v4M12 20.5h4" stroke="#2ECC1D" strokeWidth="1" strokeLinecap="round" strokeDasharray="1.5 1.5"/>
+        <rect x="3" y="3" width="9" height="9" rx="2" stroke="#1ED23C" strokeWidth="1.5"/>
+        <rect x="16" y="3" width="9" height="9" rx="2" stroke="#1ED23C" strokeWidth="1.5"/>
+        <rect x="3" y="16" width="9" height="9" rx="2" stroke="#1ED23C" strokeWidth="1.5"/>
+        <rect x="16" y="16" width="9" height="9" rx="2" stroke="#1ED23C" strokeWidth="1.5"/>
+        <path d="M12 7.5h4M7.5 12v4M20.5 12v4M12 20.5h4" stroke="#1ED23C" strokeWidth="1" strokeLinecap="round" strokeDasharray="1.5 1.5"/>
       </svg>
     ),
     title: "Localisation",
@@ -76,7 +76,7 @@ export default function Services() {
       <div
         className="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse, rgba(46,204,29,0.05) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(30,210,60,0.05) 0%, transparent 70%)",
           filter: "blur(80px)",
         }}
       />
@@ -86,8 +86,8 @@ export default function Services() {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20">
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-green mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2ECC1D]" />
-              <span className="text-xs font-medium text-[#2ECC1D] tracking-widest uppercase">Core Services</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1ED23C]" />
+              <span className="text-xs font-medium text-[#1ED23C] tracking-widest uppercase">Core Services</span>
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
               Every language.
@@ -129,11 +129,11 @@ function ServiceCard({
   wide?: boolean;
 }) {
   return (
-    <div className={`group relative glass rounded-2xl p-7 border border-white/[0.06] hover:border-[#2ECC1D]/20 transition-all duration-300 overflow-hidden ${wide ? "md:col-span-1" : ""}`}>
+    <div className={`group relative glass rounded-2xl p-7 border border-white/[0.06] hover:border-[#1ED23C]/20 transition-all duration-300 overflow-hidden ${wide ? "md:col-span-1" : ""}`}>
       {/* Hover glow */}
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at top left, rgba(46,204,29,0.06) 0%, transparent 60%)" }}
+        style={{ background: "radial-gradient(ellipse at top left, rgba(30,210,60,0.06) 0%, transparent 60%)" }}
       />
 
       <div className="relative z-10">
@@ -147,8 +147,8 @@ function ServiceCard({
 
         {/* Metric */}
         <div className="flex items-center gap-2">
-          <span className="w-1 h-1 rounded-full bg-[#2ECC1D]" />
-          <span className="text-xs font-semibold text-[#2ECC1D] tracking-wide">{metric}</span>
+          <span className="w-1 h-1 rounded-full bg-[#1ED23C]" />
+          <span className="text-xs font-semibold text-[#1ED23C] tracking-wide">{metric}</span>
         </div>
       </div>
     </div>

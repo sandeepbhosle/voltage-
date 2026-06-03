@@ -44,7 +44,7 @@ export default function ServicesTicker() {
                   {s.label}
                 </span>
               </div>
-              <span className="text-[#2ECC1D]/40 text-lg">◆</span>
+              <span className="text-[#1ED23C]/40 text-lg">◆</span>
             </div>
           ))}
         </div>
@@ -65,7 +65,7 @@ export default function ServicesTicker() {
                 style={{ fontSize: "0.65rem" }}>
                 {lang}
               </span>
-              <span className="text-[#2ECC1D]/20 text-xs">·</span>
+              <span className="text-[#1ED23C]/20 text-xs">·</span>
             </div>
           ))}
         </div>

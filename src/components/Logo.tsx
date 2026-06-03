@@ -10,7 +10,7 @@ interface LogoProps {
 export function InfoesearchLogo({ className = "", iconOnly = false, white = true, size = "md" }: LogoProps) {
   const sizes = { sm: 28, md: 36, lg: 48 };
   const iconSize = sizes[size];
-  const textColor = white ? "#FFFFFF" : "#0B1A33";
+  const textColor = white ? "#FFFFFF" : "#000A28";
 
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
@@ -25,7 +25,7 @@ export function InfoesearchLogo({ className = "", iconOnly = false, white = true
         {/* Open octagon (gap on right side) */}
         <path
           d="M 52 8 L 28 8 L 8 28 L 8 52 L 28 72 L 52 72 L 72 52"
-          stroke="#2ECC1D"
+          stroke="#1ED23C"
           strokeWidth="7"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -34,7 +34,7 @@ export function InfoesearchLogo({ className = "", iconOnly = false, white = true
         {/* Arrow "e" cursor inside */}
         <path
           d="M 26 36 L 50 36 M 26 44 L 44 44 M 26 28 L 26 52"
-          stroke="#2ECC1D"
+          stroke="#1ED23C"
           strokeWidth="6"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -46,7 +46,7 @@ export function InfoesearchLogo({ className = "", iconOnly = false, white = true
           <span
             className="font-bold tracking-tight leading-none"
             style={{
-              color: "#2ECC1D",
+              color: "#1ED23C",
               fontSize: size === "sm" ? "1rem" : size === "md" ? "1.25rem" : "1.6rem",
               letterSpacing: "-0.02em",
             }}
@@ -114,7 +114,7 @@ export function ProductLogo({
       </svg>
       <div>
         <span className="font-light text-sm lowercase tracking-wide" style={{ color }}>m</span>
-        <span className="font-black tracking-wide" style={{ color: "#0B1A33", fontSize: "0.9rem" }}>
+        <span className="font-black tracking-wide" style={{ color: "#000A28", fontSize: "0.9rem" }}>
           {labels[product]}
         </span>
       </div>

@@ -7,7 +7,7 @@ export default function CTASection() {
       <div
         className="absolute inset-x-0 top-0 h-full pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at 50% 50%, rgba(46,204,29,0.1) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(30,210,60,0.1) 0%, transparent 65%)",
         }}
       />
 
@@ -17,20 +17,20 @@ export default function CTASection() {
       {/* Octagon decorations */}
       <div className="absolute top-12 left-12 opacity-[0.07] pointer-events-none">
         <svg width="120" height="120" viewBox="0 0 80 80" fill="none">
-          <path d="M52 8L28 8L8 28L8 52L28 72L52 72L72 52L72 28Z" stroke="#2ECC1D" strokeWidth="2" />
+          <path d="M52 8L28 8L8 28L8 52L28 72L52 72L72 52L72 28Z" stroke="#1ED23C" strokeWidth="2" />
         </svg>
       </div>
       <div className="absolute bottom-12 right-12 opacity-[0.07] pointer-events-none">
         <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-          <path d="M52 8L28 8L8 28L8 52L28 72L52 72L72 52L72 28Z" stroke="#2ECC1D" strokeWidth="2" />
+          <path d="M52 8L28 8L8 28L8 52L28 72L52 72L72 52L72 28Z" stroke="#1ED23C" strokeWidth="2" />
         </svg>
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
         {/* Top chip */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-green mb-10">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#2ECC1D] animate-pulse" />
-          <span className="text-xs font-medium text-[#2ECC1D] tracking-widest uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#1ED23C] animate-pulse" />
+          <span className="text-xs font-medium text-[#1ED23C] tracking-widest uppercase">
             Now Accepting Enterprise Clients
           </span>
         </div>
@@ -53,7 +53,7 @@ export default function CTASection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <a
             href="mailto:demo@infoesearch.com"
-            className="group px-10 py-4 rounded-xl text-base font-bold text-black bg-[#2ECC1D] hover:bg-[#3AE024] transition-all duration-200 glow-green-btn"
+            className="group px-10 py-4 rounded-xl text-base font-bold text-black bg-[#1ED23C] hover:bg-[#3AE024] transition-all duration-200 glow-green-btn"
           >
             Book a Demo
             <span className="ml-2 group-hover:translate-x-1 inline-block transition-transform">→</span>
@@ -75,7 +75,7 @@ export default function CTASection() {
             "Dedicated success manager",
           ].map((item) => (
             <div key={item} className="flex items-center gap-2">
-              <span className="text-[#2ECC1D]/40">✓</span>
+              <span className="text-[#1ED23C]/40">✓</span>
               {item}
             </div>
           ))}

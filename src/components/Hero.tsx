@@ -59,14 +59,14 @@ export default function Hero() {
   }, []);
 
   const particles = [
-    { x: "8%",  y: "18%", size: 64,  opacity: 0.18, delay: 0,   color: "#2ECC1D" },
+    { x: "8%",  y: "18%", size: 64,  opacity: 0.18, delay: 0,   color: "#1ED23C" },
     { x: "82%", y: "12%", size: 44,  opacity: 0.14, delay: 1.5, color: "#00B4D8" },
     { x: "90%", y: "55%", size: 80,  opacity: 0.12, delay: 3,   color: "#A855F7" },
-    { x: "5%",  y: "65%", size: 52,  opacity: 0.16, delay: 2,   color: "#2ECC1D" },
+    { x: "5%",  y: "65%", size: 52,  opacity: 0.16, delay: 2,   color: "#1ED23C" },
     { x: "70%", y: "78%", size: 36,  opacity: 0.13, delay: 0.8, color: "#3B82F6" },
     { x: "45%", y: "85%", size: 28,  opacity: 0.10, delay: 2.5, color: "#EF4444" },
     { x: "25%", y: "8%",  size: 40,  opacity: 0.12, delay: 1.2, color: "#A855F7" },
-    { x: "55%", y: "5%",  size: 24,  opacity: 0.09, delay: 3.5, color: "#2ECC1D" },
+    { x: "55%", y: "5%",  size: 24,  opacity: 0.09, delay: 3.5, color: "#1ED23C" },
   ];
 
   return (
@@ -78,7 +78,7 @@ export default function Hero() {
       <div
         className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full pointer-events-none animate-glow-pulse"
         style={{
-          background: "radial-gradient(ellipse at center, rgba(46,204,29,0.18) 0%, rgba(46,204,29,0.04) 50%, transparent 70%)",
+          background: "radial-gradient(ellipse at center, rgba(30,210,60,0.18) 0%, rgba(30,210,60,0.04) 50%, transparent 70%)",
           filter: "blur(40px)",
         }}
       />
@@ -110,7 +110,7 @@ export default function Hero() {
       <div
         className="absolute left-0 right-0 h-px pointer-events-none z-10 opacity-[0.06]"
         style={{
-          background: "linear-gradient(90deg, transparent, #2ECC1D, transparent)",
+          background: "linear-gradient(90deg, transparent, #1ED23C, transparent)",
           animation: "scan 5s linear infinite",
         }}
       />
@@ -119,8 +119,8 @@ export default function Hero() {
       <div className="relative z-20 max-w-6xl mx-auto px-6 lg:px-8 text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-green mb-10 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#2ECC1D] animate-pulse" />
-          <span className="text-xs font-medium text-[#2ECC1D] tracking-widest uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#1ED23C] animate-pulse" />
+          <span className="text-xs font-medium text-[#1ED23C] tracking-widest uppercase">
             4 Patented AI Products
           </span>
         </div>
@@ -148,7 +148,7 @@ export default function Hero() {
           <span
             className="text-lg font-semibold tracking-wide transition-all duration-300"
             style={{
-              color: "#2ECC1D",
+              color: "#1ED23C",
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(8px)",
               minWidth: "140px",
@@ -177,7 +177,7 @@ export default function Hero() {
         >
           <a
             href="#demo"
-            className="group px-8 py-4 rounded-xl text-base font-bold text-black bg-[#2ECC1D] hover:bg-[#3AE024] transition-all duration-200 glow-green-btn"
+            className="group px-8 py-4 rounded-xl text-base font-bold text-black bg-[#1ED23C] hover:bg-[#3AE024] transition-all duration-200 glow-green-btn"
           >
             Book a Demo
             <span className="ml-2 group-hover:translate-x-1 inline-block transition-transform">→</span>
@@ -202,7 +202,7 @@ export default function Hero() {
             "Enterprise SLA",
           ].map((stat) => (
             <div key={stat} className="flex items-center gap-2">
-              <span className="w-1 h-1 rounded-full bg-[#2ECC1D]/60" />
+              <span className="w-1 h-1 rounded-full bg-[#1ED23C]/60" />
               <span className="text-sm text-white/40 tracking-wide">{stat}</span>
             </div>
           ))}
