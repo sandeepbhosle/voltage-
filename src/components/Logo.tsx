@@ -1,29 +1,16 @@
 "use client";
 
-// Brand colors extracted from Logo.ai content stream
-const GREEN = "#1ED23C";
-const NAVY = "#000A28";
+// Exact brand colours extracted from Logo.ai content stream
+export const BRAND_GREEN = "#1ED23C";
+export const BRAND_NAVY  = "#000A28";
 
-interface LogoProps {
-  className?: string;
-  iconOnly?: boolean;
-  white?: boolean;
-  size?: "sm" | "md" | "lg";
-}
-
-/*
-  Logo mark breakdown (from JPEG reference):
-  - Outer: Open octagon (flat top/bottom, 45° corners) — gap on the RIGHT side
-  - Inner: Horizontal arrow / "e" cursor shape made of:
-      • A left vertical stem
-      • Upper horizontal bar (full width into the opening)
-      • Lower horizontal bar (shorter, ~3/4 width)
-  The negative space reads as a forward-pointing arrow or stylised "e"
-*/
-
+/* ─── Primary mark: "Signal" ─────────────────────────────────────────────────
+   Double-ring octagon (outer faint + inner bold) with circular-arc "e" + bar.
+   The cleanest, most technically precise interpretation of the octagonal-e DNA.
+   ─────────────────────────────────────────────────────────────────────────── */
 export function InfoesearchMark({
   size = 40,
-  color = GREEN,
+  color = BRAND_GREEN,
 }: {
   size?: number;
   color?: string;
@@ -36,97 +23,102 @@ export function InfoesearchMark({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/*
-        Open octagon — 7 of 8 sides (right vertical edge omitted).
-        Points: top-left → top-right → upper-right-corner → (gap) → lower-right-corner → bottom-right → bottom-left → lower-left-corner → upper-left-corner → back to top-left
-        Using flat-top orientation matching the logo.
-      */}
-      <path
-        d="M 65 7 L 35 7 L 7 35 L 7 65 L 35 93 L 65 93 L 93 65"
+      {/* Outer octagon — fine ghost ring */}
+      <polygon
+        points="65,6 35,6 6,35 6,65 35,94 65,94 94,65 94,35"
         stroke={color}
-        strokeWidth="9"
-        strokeLinecap="round"
+        strokeWidth="4.5"
         strokeLinejoin="round"
         fill="none"
+        opacity="0.28"
       />
-      {/*
-        Interior "e" / arrow mark:
-        - Vertical left stem
-        - Upper bar reaching toward the right opening
-        - Lower bar (slightly shorter)
-      */}
-      <path
-        d="M 32 32 L 32 68"
+      {/* Inner octagon — bold ring */}
+      <polygon
+        points="61,14 39,14 14,39 14,61 39,86 61,86 86,61 86,39"
         stroke={color}
-        strokeWidth="8.5"
+        strokeWidth="4"
+        strokeLinejoin="round"
+        fill="none"
+        opacity="0.65"
+      />
+
+      {/* "e" mark — circular arc (C-bowl) + horizontal counter bar */}
+      {/* Arc: large arc counterclockwise from upper-right to lower-right = C */}
+      <path
+        d="M 67 42 A 19 19 0 1 0 67 58"
+        stroke={color}
+        strokeWidth="6"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Counter bar through the C */}
+      <line
+        x1="31" y1="50" x2="67" y2="50"
+        stroke={color}
+        strokeWidth="6"
         strokeLinecap="round"
       />
-      <path
-        d="M 32 42 L 70 42"
-        stroke={color}
-        strokeWidth="8.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M 32 58 L 58 58"
-        stroke={color}
-        strokeWidth="8.5"
-        strokeLinecap="round"
-      />
+
+      {/* Structural accent dots at cardinal midpoints — signal nodes */}
+      <circle cx="50" cy="6"  r="2.2" fill={color} opacity="0.45" />
+      <circle cx="94" cy="50" r="2.2" fill={color} opacity="0.45" />
+      <circle cx="50" cy="94" r="2.2" fill={color} opacity="0.45" />
+      <circle cx="6"  cy="50" r="2.2" fill={color} opacity="0.45" />
     </svg>
   );
 }
 
+/* ─── Wordmark ────────────────────────────────────────────────────────────── */
 export function InfoesearchLogo({
   className = "",
   iconOnly = false,
   white = true,
   size = "md",
-}: LogoProps) {
-  const iconSizes = { sm: 28, md: 36, lg: 50 };
-  const fontSizes = { sm: "0.95rem", md: "1.2rem", lg: "1.55rem" };
-  const textColor = white ? "#FFFFFF" : NAVY;
+}: {
+  className?: string;
+  iconOnly?: boolean;
+  white?: boolean;
+  size?: "sm" | "md" | "lg";
+}) {
+  const iconSizes = { sm: 26, md: 34, lg: 48 };
+  const fontSizes = { sm: "0.9rem", md: "1.15rem", lg: "1.5rem" };
+  const textColor = white ? "#FFFFFF" : BRAND_NAVY;
+  const markColor = white ? BRAND_GREEN : BRAND_GREEN;
 
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <InfoesearchMark size={iconSizes[size]} color={white ? GREEN : GREEN} />
+      <InfoesearchMark size={iconSizes[size]} color={markColor} />
 
       {!iconOnly && (
-        <div className="flex items-baseline" style={{ gap: "0px" }}>
-          {/* "info" — bold, green */}
-          <span
-            style={{
-              color: white ? GREEN : NAVY,
-              fontSize: fontSizes[size],
-              fontWeight: 700,
-              letterSpacing: "-0.025em",
-              lineHeight: 1,
-            }}
-          >
+        <div style={{ display: "flex", alignItems: "baseline", gap: 0 }}>
+          {/* "info" — bold, brand green */}
+          <span style={{
+            color: BRAND_GREEN,
+            fontSize: fontSizes[size],
+            fontWeight: 800,
+            letterSpacing: "-0.03em",
+            lineHeight: 1,
+          }}>
             info
           </span>
-          {/* "e" — lighter, same color */}
-          <span
-            style={{
-              color: textColor,
-              fontSize: fontSizes[size],
-              fontWeight: 300,
-              letterSpacing: "-0.025em",
-              lineHeight: 1,
-            }}
-          >
+          {/* "e" — light weight, same colour as rest of wordmark */}
+          <span style={{
+            color: textColor,
+            fontSize: fontSizes[size],
+            fontWeight: 300,
+            letterSpacing: "-0.03em",
+            lineHeight: 1,
+          }}>
             e
           </span>
           {/* "search" — light weight */}
-          <span
-            style={{
-              color: textColor,
-              fontSize: fontSizes[size],
-              fontWeight: 300,
-              letterSpacing: "-0.025em",
-              lineHeight: 1,
-            }}
-          >
+          <span style={{
+            color: textColor,
+            fontSize: fontSizes[size],
+            fontWeight: 300,
+            letterSpacing: "-0.03em",
+            lineHeight: 1,
+          }}>
             search
           </span>
         </div>
@@ -135,35 +127,30 @@ export function InfoesearchLogo({
   );
 }
 
-/* ── Product logos (mSubs / mDubs / mShield / mTracker) ── */
-
-const PRODUCT_CONFIG = {
-  msubs:   { color: "#00B4D8", label: "SUBS"    },
-  mdubs:   { color: "#A855F7", label: "DUBS"    },
-  mshield: { color: "#EF4444", label: "SHIELD"  },
-  mtracker:{ color: "#3B82F6", label: "TRACKER" },
+/* ─── Product logo marks ──────────────────────────────────────────────────── */
+const PRODUCTS = {
+  msubs:    { color: "#00B4D8", label: "SUBS"    },
+  mdubs:    { color: "#A855F7", label: "DUBS"    },
+  mshield:  { color: "#EF4444", label: "SHIELD"  },
+  mtracker: { color: "#3B82F6", label: "TRACKER" },
 } as const;
 
-function ProductMark({ color, size = 36 }: { color: string; size?: number }) {
+function ProductMark({ color, size }: { color: string; size: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
-      {/* Full closed octagon */}
-      <path
-        d="M 65 7 L 35 7 L 7 35 L 7 65 L 35 93 L 65 93 L 93 65 L 93 35 Z"
+      {/* Closed octagon */}
+      <polygon
+        points="65,6 35,6 6,35 6,65 35,94 65,94 94,65 94,35"
         stroke={color}
-        strokeWidth="8"
+        strokeWidth="6"
         strokeLinejoin="round"
         fill="none"
       />
-      {/*
-        Lowercase "m" inside:
-        Two arches from a shared base line.
-        Start bottom-left, go up-arch1-down-arch2-down to bottom-right.
-      */}
+      {/* Lowercase "m" — two arches from a shared stem */}
       <path
-        d="M 22 68 L 22 42 Q 22 30 34 30 Q 46 30 50 40 Q 54 30 66 30 Q 78 30 78 42 L 78 68"
+        d="M 22 70 L 22 42 Q 22 28 36 28 Q 50 28 50 42 Q 50 28 64 28 Q 78 28 78 42 L 78 70"
         stroke={color}
-        strokeWidth="7.5"
+        strokeWidth="7"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
@@ -175,19 +162,26 @@ function ProductMark({ color, size = 36 }: { color: string; size?: number }) {
 export function ProductLogo({
   product,
   size = 32,
+  dark = false,
 }: {
-  product: keyof typeof PRODUCT_CONFIG;
+  product: keyof typeof PRODUCTS;
   size?: number;
+  dark?: boolean;
 }) {
-  const { color, label } = PRODUCT_CONFIG[product];
-  const fontSize = size * 0.38;
+  const { color, label } = PRODUCTS[product];
+  const fs = size * 0.4;
 
   return (
     <div className="flex items-center gap-2.5">
       <ProductMark color={color} size={size} />
-      <div className="flex items-baseline gap-0">
-        <span style={{ color, fontSize, fontWeight: 300 }}>m</span>
-        <span style={{ color: NAVY, fontSize, fontWeight: 900, letterSpacing: "0.02em" }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 0 }}>
+        <span style={{ color, fontSize: fs, fontWeight: 300, letterSpacing: "0.01em" }}>m</span>
+        <span style={{
+          color: dark ? BRAND_NAVY : "#FFFFFF",
+          fontSize: fs,
+          fontWeight: 900,
+          letterSpacing: "0.04em",
+        }}>
           {label}
         </span>
       </div>

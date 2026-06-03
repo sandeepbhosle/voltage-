@@ -80,6 +80,12 @@ export default function Footer() {
             <span className="text-xs text-white/20">ISO 9001 Certified</span>
             <span className="text-xs text-white/20">GDPR Compliant</span>
             <span className="text-xs text-white/20">SOC 2 Type II</span>
+            <a
+              href="/logo-concepts"
+              className="text-xs text-[#1ED23C]/30 hover:text-[#1ED23C]/70 transition-colors"
+            >
+              Brand concepts →
+            </a>
           </div>
         </div>
       </div>
