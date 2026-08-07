@@ -528,7 +528,7 @@ body.is-touch button {
   font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgba(247, 245, 242, 0.82);
 }
 
 .hero__meta .dot {
@@ -585,16 +585,9 @@ body.is-touch button {
   }
 }
 
-/* Reveal helpers (JS toggles) */
-.reveal-line,
-.reveal-fade,
+/* Reveal helpers — visibility controlled by GSAP (keep visible without JS) */
 .reveal-up,
 .reveal-slide {
-  opacity: 0;
-}
-
-.hero.is-ready .reveal-line,
-.hero.is-ready .reveal-fade {
   opacity: 1;
 }
 

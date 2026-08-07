@@ -119,7 +119,6 @@ function initHero() {
 
   if (reduceMotion) {
     hero.classList.add("is-ready");
-    gsap.set([".reveal-line", ".reveal-fade"], { opacity: 1, y: 0 });
     return;
   }
 
@@ -128,16 +127,31 @@ function initHero() {
     onComplete: () => hero.classList.add("is-ready"),
   });
 
-  tl.from(".hero__brand", { y: 48, opacity: 0, duration: 0.9 })
-    .from(
+  tl.fromTo(
+    ".hero__brand",
+    { y: 48, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.9 }
+  )
+    .fromTo(
       ".hero__title .reveal-line",
-      { y: 36, opacity: 0, duration: 0.7, stagger: 0.12 },
+      { y: 36, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, stagger: 0.12 },
       "-=0.45"
     )
-    .from(".hero__lede", { y: 24, opacity: 0, duration: 0.6 }, "-=0.3")
-    .from(".hero__actions", { y: 20, opacity: 0, duration: 0.55 }, "-=0.35")
-    .from(".hero__meta", { opacity: 0, duration: 0.5 }, "-=0.2")
-    .from(".hero__scroll", { opacity: 0, duration: 0.4 }, "-=0.2");
+    .fromTo(
+      ".hero__lede",
+      { y: 24, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6 },
+      "-=0.3"
+    )
+    .fromTo(
+      ".hero__actions",
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.55 },
+      "-=0.35"
+    )
+    .fromTo(".hero__meta", { opacity: 0 }, { opacity: 1, duration: 0.5 }, "-=0.2")
+    .fromTo(".hero__scroll", { opacity: 0 }, { opacity: 1, duration: 0.4 }, "-=0.2");
 
   gsap.to(".hero__orb--1", {
     y: 40,
@@ -365,24 +379,32 @@ function initReveals() {
   }
 
   gsap.utils.toArray(".reveal-up").forEach((el) => {
-    gsap.from(el, {
-      opacity: 0,
-      y: 28,
-      duration: 0.7,
-      ease: "power2.out",
-      scrollTrigger: { trigger: el, start: "top 88%" },
-    });
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 28 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top 88%" },
+      }
+    );
   });
 
   gsap.utils.toArray(".reveal-slide").forEach((el, i) => {
-    gsap.from(el, {
-      opacity: 0,
-      x: 36,
-      duration: 0.75,
-      delay: i * 0.08,
-      ease: "power2.out",
-      scrollTrigger: { trigger: el, start: "top 88%" },
-    });
+    gsap.fromTo(
+      el,
+      { opacity: 0, x: 36 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.75,
+        delay: i * 0.08,
+        ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top 88%" },
+      }
+    );
   });
 }
 
