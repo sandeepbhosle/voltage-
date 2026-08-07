@@ -1,0 +1,23 @@
+{
+  "name": "infoesearch-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Infoesearch — cinematic media management marketing site",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandeepbhosle/voltage-.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "gsap": "^3.13.0"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
